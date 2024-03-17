@@ -1,13 +1,14 @@
-import Background from "./components/Background/Background.jsx";
 import { Spotlight } from "./components/Background/Spotilight.tsx";
 import Navbar from "./components/Navbar/Navbar.jsx";
+import Hero from "./components/Hero/Hero.jsx";
 
 function App() {
   return (
     <>
-      <Navbar classname="w-full" />
-      <Spotlight />
-      {/* <Background/> */}
+      <Navbar />
+      <Spotlight className="fixed top-0" />
+      <Hero />
+     
     </>
   );
 }
