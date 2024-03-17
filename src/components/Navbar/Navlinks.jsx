@@ -11,6 +11,10 @@ function Navlinks() {
           <li className="hover:text-foreground text-foreground/80 transition-colors cursor-pointer">
             Roadmap
           </li>
+
+          <li className="hover:text-foreground text-foreground/80 transition-colors cursor-pointer">
+            Sheet
+          </li>
           <div className="flex items-center gap-1 cursor-pointer">
             <li className="hover:text-foreground text-foreground/80 transition-colors cursor-pointer">
               75 days hard
@@ -19,9 +23,6 @@ function Navlinks() {
               new
             </li>
           </div>
-          <li className="hover:text-foreground text-foreground/80 transition-colors cursor-pointer">
-            Sheet
-          </li>
         </ul>
       </div>
     </>
