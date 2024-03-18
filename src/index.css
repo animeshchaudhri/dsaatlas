@@ -36,3 +36,13 @@
     --ring: 240 3.7% 15.9%;
   }
 }
+.codeEditorWindow {
+  transform: rotateY(-10deg);
+}
+
+.codeEditorWindow:hover {
+  transform: rotateY(0deg);
+}
+.perspectiveCustom {
+  perspective: 800px;
+}
