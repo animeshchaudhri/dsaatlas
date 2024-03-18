@@ -1,12 +1,13 @@
-
+"use client";
 import React from "react";
 import { motion } from "framer-motion";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-
+import {memo } from "react";
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
 
 export const BackgroundBeams = React.memo(
   ({ className }: { className?: string }) => {
@@ -140,5 +141,6 @@ export const BackgroundBeams = React.memo(
     );
   }
 );
-export default BackgroundBeams;
+
 BackgroundBeams.displayName = "BackgroundBeams";
+export default BackgroundBeams;

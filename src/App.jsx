@@ -10,7 +10,8 @@ function App() {
         <Spotlight className="fixed top-0" />
         <Hero />
       </div>
-      <BackgroundBeams className="absolute top-0 z-0" />
+
+      <BackgroundBeams className="absolute top-0 " />
     </div>
   );
 }

@@ -54,7 +54,7 @@ function Editor() {
           <div className="hide-scrollbar relative h-[370px] w-full overflow-auto rounded-sl bg-[#011627] xl:w-[100%]">
             <pre
               className="hide-scrollbar mb-10 px-4 pt-4 text-xs language-javascript"
-              tabindex="0"
+              tabIndex="0"
             ></pre>
             <div className="ml-1">
               <Textgen words={words} />
