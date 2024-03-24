@@ -1,7 +1,7 @@
 import Code_Vault from "./Code_Vault";
 function Feature_About() {
   return (
-    <div className="flex flex-col items-center mt-10  overflow-hidden ">
+    <div className="flex flex-col items-center mt-5  overflow-hidden ">
       <h1 className="mb-6 text-left text-2xl font-semibold lg:text-4xl">
         Real world questions for Technical Interviews
       </h1>

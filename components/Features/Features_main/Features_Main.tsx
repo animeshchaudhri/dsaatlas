@@ -1,6 +1,9 @@
 import React from "react";
 import CAARD from "../../Cards/CAARD";
 import Features_List from "./Features_List";
+import Image from "next/image";
+import Placehold from "../../../public/lc1.png";
+import Lamp from "../../Background/Lamp/Lamp";
 
 function Features_Main() {
   const items = [
@@ -17,25 +20,32 @@ function Features_Main() {
   return (
     <>
       <div>
-        <div className="w-full h-full bg-[#1E2028] p-4 overflow-hidden">
-          <div className=" mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-2 mt-10 ">
-            <div className="flex flex-col justify-center ">
-              <h1 className="mb-6 text-left text-2xl font-semibold lg:text-4xl">
-                Practice Algorithmic Questions
-              </h1>
-              <p className=" mb-6 max-w-lg text-left text-sm text-gray-400 lg:text-base">
-                Algorithmic questions are everywhere and even we don't like it.
-                But since companies are asking, we have a long list of questions
-                that are popularly asked in tech interviews. Some of the
-                concepts that are tested are:
-              </p>
-              <Features_List items={items} />
-            </div>
-            <div className="container">
-              <CAARD />
+        <div className="overflow-x-hidden relative flex h-full">
+          <div className="w-full min-h-lvh bg-[#1E2028] p-4 overflow-hidden px-4 py-20 lg:py-40 ">
+            <div className=" mx-auto grid max-w-6xl grid-cols-1 gap-10 lg:grid-cols-2 mt-24 ">
+              <div className="flex flex-col  justify-center ">
+                <h1 className="mb-6 text-left text-2xl font-semibold leading-snug text-white lg:text-4xl">
+                  Practice Algorithmic Questions
+                </h1>
+                <p className=" mb-6 max-w-lg text-left text-sm text-gray-400 lg:text-base">
+                  Algorithmic questions are everywhere and even we don't like
+                  it. But since companies are asking, we have a long list of
+                  questions that are popularly asked in tech interviews. Some of
+                  the concepts that are tested are:
+                </p>
+                <Features_List items={items} />
+              </div>
+              <div className="w-full h-full bg-[#1E2028] p-4 overflow-hidden">
+                <Image
+                  src={Placehold}
+                  alt="somthing"
+                  className=" absolute rounded-xl  lg:-right-20 lg:mx-0 lg:max-w-xl xl:max-w-2xl"
+                />
+              </div>
             </div>
           </div>
         </div>
+        {/* <Lamp /> */}
       </div>
     </>
   );

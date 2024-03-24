@@ -47,7 +47,7 @@ function Hero_links() {
           Coding Interview
         </a>
         <a className="rounded-md border-2 border-[#06b6d4]/70 px-4 py-2 text-white shadow-xl transition duration-200 hover:scale-95 hover:shadow-[#06b6d4]/20">
-          Front-end Interview
+          Dsa Roadmap
         </a>
       </div>
       <div className="mb-6 flex w-full flex-col text-xs text-white">

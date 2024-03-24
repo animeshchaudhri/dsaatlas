@@ -32,7 +32,7 @@ function Navlinks() {
             >
               75 days hard
             </Link>
-            <li className="inline-flex items-center border rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-0 border-transparent text-primary-foreground py-0.5 text-xs h-4 bg-red-600 px-1.5">
+            <li className="inline-flex animate-shimmer items-center border rounded-full font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-0 border-transparent text-primary-foreground py-0.5 text-xs h-4 bg-red-600 px-1.5">
               new
             </li>
           </div>
