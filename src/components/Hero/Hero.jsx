@@ -1,7 +1,8 @@
+"use client";
 import Editor from "./Editor/Editor.jsx";
 import Hero_links from "./Hero_links/Hero_links.jsx";
+import CAARD from "../Cards/CAARD.tsx";
 
-import BackgroundBeams from "../Background/Background.tsx";
 function Hero() {
   return (
     <>
@@ -14,7 +15,7 @@ function Hero() {
           <Editor />
         </div>
       </div>
-      {/* <BackgroundBeams   /> */}
+      <CAARD />
     </>
   );
 }
