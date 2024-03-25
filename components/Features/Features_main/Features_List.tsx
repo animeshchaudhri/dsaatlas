@@ -1,7 +1,7 @@
 "use client";
 interface ListItem {
+  id: number;
   name: string;
-  // Add more properties as needed
 }
 interface ListProps {
   items: ListItem[];
@@ -12,7 +12,10 @@ function Features_List({ items }: ListProps) {
     <div>
       <ul className="flex max-w-lg flex-row flex-wrap">
         {items.map((item, index) => (
-          <div className="mb-4 mr-4 flex flex-row items-center space-x-2 rounded-md border-2 border-gray-100/5 px-2 py-0.5 cursor-pointer">
+          <div
+            key={index}
+            className="mb-4 mr-4 flex flex-row items-center space-x-2 rounded-md border-2 border-gray-100/5 px-2 py-0.5 cursor-pointer"
+          >
             <svg
               version="1.1"
               id="Layer_1"
@@ -31,7 +34,7 @@ function Features_List({ items }: ListProps) {
               </g>
             </svg>
 
-            <li key={index}>{item.name}</li>
+            <li key={item.id}>{item.name}</li>
           </div>
         ))}
       </ul>

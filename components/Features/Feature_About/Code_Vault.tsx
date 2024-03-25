@@ -5,10 +5,7 @@ import Placehold from "../../../public/lc1.png";
 function Code_Vault() {
   const cardX = useMotionValue(0);
   const cardY = useMotionValue(0);
-  const rotateX = useTransform(cardY, [-300, 300], [10, -10]); // Reversed values
-  const rotateY = useTransform(cardX, [-300, 300], [-10, 10]); // Reversed values
-  const cardRotateX = useTransform(cardY, [-300, 300], [25, -25]); // Adjusted rotation values
-  const cardRotateY = useTransform(cardX, [-300, 300], [-25, 25]); // Adjusted rotation values
+ 
 
   const handleMouseMove = (event: any) => {
     const offsetX = event.clientX - window.innerWidth / 2;
@@ -35,8 +32,8 @@ function Code_Vault() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className=" showcase overflow-hidden container ">
-        <Image src={Placehold} alt="somthing" />
+      <div className=" showcase overflow-hidden container  image-container  transform rounded-xl bg-gradient-to-r from-cyan-700 to-cyan-500 p-2 ">
+        <Image src={Placehold} priority={true} alt="somthing" />
       </div>
     </motion.div>
   );
