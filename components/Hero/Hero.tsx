@@ -1,3 +1,4 @@
+"use client";
 import Editor from "./Editor/Editor.jsx";
 import Hero_links from "./Hero_links/Hero_links.jsx";
 
