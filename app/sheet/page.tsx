@@ -1,7 +1,12 @@
-import React from "react";
-
+import Sheet from "@/components/Sheet/Sheet";
+import Navbar from "../../components/ui/Navbar/Navbar";
 function page() {
-  return <div>page</div>;
+  return (
+    <div>
+      <Navbar />
+      <Sheet />
+    </div>
+  );
 }
 
 export default page;

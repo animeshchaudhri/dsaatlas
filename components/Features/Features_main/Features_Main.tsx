@@ -1,5 +1,5 @@
 import React from "react";
-import CAARD from "../../Cards/CAARD";
+import CAARD from "../../ui/Cards/CAARD";
 import Features_List from "./Features_List";
 import Image from "next/image";
 import Placeholdy from "../../../public/interactive-terminal.png";
@@ -31,7 +31,6 @@ function Features_Main() {
     { id: 22, name: "Bit Manipulation" },
     { id: 23, name: "Two Pointers" },
     { id: 24, name: "Binary Tree" },
-   
   ];
   return (
     <>
@@ -60,9 +59,8 @@ function Features_Main() {
             </div>
           </div>
         </div>
-         <Lamp />
+        <Lamp />
       </div>
-     
     </>
   );
 }

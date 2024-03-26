@@ -1,13 +1,13 @@
-import { Button } from '../Buttons/Button';
+import { Button } from "../Buttons/Button";
 import { SearchIcon } from "lucide-react";
-import React from 'react'
+import React from "react";
 
-
-
-
-export default function SearchBar({ setOpen }: { setOpen: (v: boolean) => void }) {
- 
-  const cmdOrCtrl =  'Ctrl ';
+export default function SearchBar({
+  setOpen,
+}: {
+  setOpen: (v: boolean) => void;
+}) {
+  const cmdOrCtrl = "Ctrl ";
   return (
     <>
       {/* Mobile Bar */}

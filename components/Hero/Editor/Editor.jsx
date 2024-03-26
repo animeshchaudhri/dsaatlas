@@ -62,7 +62,10 @@ function Editor() {
               tabIndex="0"
             ></pre>
             <div className="ml-1">
-              <Textgen words={words} />
+              <Textgen
+                words={words}
+                className="{ dark:text-white text-black text-xl leading-snug tracking-wide overflow-hidden}"
+              />
             </div>
 
             <div></div>

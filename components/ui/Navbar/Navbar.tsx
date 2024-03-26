@@ -1,7 +1,10 @@
+"use client";
 import { LogIn } from "lucide-react";
 import Navlinks from "./Navlinks";
 import SearchBar from "./Search";
 import { Suspense } from "react";
+import Link from "next/link";
+
 function Navbar() {
   return (
     <>
@@ -11,14 +14,16 @@ function Navbar() {
           style={{ maxWidth: "950px" }}
         >
           <div className="relative flex items-center gap-3">
-            <h1>Dsa Atlas</h1>
+            <Link href="/">
+              <h1>Dsa Atlas</h1>
+            </Link>
             <Navlinks />
           </div>
 
           <div className="flex items-center justify-end gap-2">
             <div>
               <Suspense>
-                <SearchBar />
+                <SearchBar setOpen={false} />
               </Suspense>
             </div>
             <div className="flex items-center space-x-2 focus:bg-accent w-20 rounded-xl bg-transparent p-2 text-black duration-300 hover:bg-gray-200 focus:outline-none dark:text-white hover:dark:bg-gray-800 cursor-pointer">

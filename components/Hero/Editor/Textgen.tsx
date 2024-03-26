@@ -1,19 +1,19 @@
-
 import { useEffect } from "react";
 import { motion, stagger, useAnimate } from "framer-motion";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import React from 'react'
-
+import React from "react";
 
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
 
-
-const TextGenerateEffect = ({
+export const TextGenerateEffect = ({
   words,
   className,
+}: {
+  words: string;
+  className?: string;
 }) => {
   const [scope, animate] = useAnimate();
   let wordsArray = words.split(" ");
@@ -50,7 +50,7 @@ const TextGenerateEffect = ({
   return (
     <div className={cn("font-bold", className)}>
       <div className="mt-4">
-        <div className=" dark:text-white  text-black text-xl leading-snug tracking-wide">
+        <div className=" dark:text-white overflow-hidden text-black text-xl leading-snug tracking-wide">
           {renderWords()}
         </div>
       </div>
