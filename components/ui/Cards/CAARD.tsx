@@ -2,7 +2,7 @@
 import React from "react";
 import { ImageCard } from "./Cards";
 import clsx from "clsx";
-import FeatureCardChallengeDark1 from "../../public/feature_card_challenge_dark1.png";
+import FeatureCardChallengeDark1 from "@/public/feature_card_challenge_dark2.png";
 // import FeatureCardChallengeDark2 from "../../public/feature_card_challenge_dark2.png";
 
 function CAARD() {

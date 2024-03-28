@@ -59,7 +59,7 @@ function Features_Main() {
             </div>
           </div>
         </div>
-        <Lamp />
+        {/* <Lamp /> */}
       </div>
     </>
   );
