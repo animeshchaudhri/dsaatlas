@@ -3,11 +3,7 @@ import { Button } from "../Buttons/Button";
 import { SearchIcon } from "lucide-react";
 import React from "react";
 
-export default function SearchBar({
-  setOpen,
-}: {
-  setOpen: (v: boolean) => void;
-}) {
+export default function SearchBar({ setOpen }: { setOpen: (v: any) => void }) {
   const cmdOrCtrl = "Ctrl ";
   return (
     <>

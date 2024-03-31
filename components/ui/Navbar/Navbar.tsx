@@ -23,11 +23,7 @@ function Navbar() {
           </div>
 
           <div className="flex items-center justify-end gap-2">
-            <div>
-              <Suspense>
-                <SearchBar setOpen={false} />
-              </Suspense>
-            </div>
+            <SearchBar setOpen={(v: any) => {}} />
             {userId ? (
               <div className="pl-7">
                 <UserButton />
