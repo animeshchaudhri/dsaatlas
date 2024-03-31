@@ -1,5 +1,5 @@
 "use client";
-import FeatureCardChallengeDark1 from "../../public/feature_card_challenge_dark1.png";
+
 import Image, { type StaticImageData } from "next/image";
 import {
   motion,
@@ -10,7 +10,6 @@ import {
 } from "framer-motion";
 import React from "react";
 import clsx from "clsx";
-import { useTheme } from "next-themes";
 
 import { useEffect, useState, type MouseEvent } from "react";
 
@@ -102,7 +101,7 @@ export function ImageCard({
         <Image
           alt={image.alt}
           className={imgClass1}
-          src={image.dark1}
+          src={image.dark2}
           style={{
             position: "absolute",
             userSelect: "none",

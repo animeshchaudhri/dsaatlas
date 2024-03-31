@@ -1,5 +1,9 @@
+import { useSearchParams } from "next/navigation";
+import sheetcall from "../../app/api/sheet";
+import { Checkbox } from "@/components/ui/Checkbox";
+
 export default async function Sheet() {
-  const SheetData = await fetch(`https://leetcode-animeshxd.koyeb.app/easy`);
+  const SheetData = await sheetcall();
   if (!SheetData) {
     throw new Error("Failed to fetch data");
   }
@@ -30,7 +34,9 @@ export default async function Sheet() {
                   className="w-full bg-[#12151D] hover:bg-gray-900"
                 >
                   <td className="px-2 py-4">
-                    <span className="ml-2 inline-block">{item.id}</span>
+                    <span className="ml-2 inline-block">
+                      <Checkbox />
+                    </span>
                   </td>
                   <td className="px-2">
                     <a

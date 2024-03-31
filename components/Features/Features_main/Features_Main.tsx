@@ -2,7 +2,7 @@ import React from "react";
 import CAARD from "../../ui/Cards/CAARD";
 import Features_List from "./Features_List";
 import Image from "next/image";
-import Placeholdy from "../../../public/interactive-terminal.png";
+import Placeholdy from "@/public/interactive-terminal.png";
 import Lamp from "../../Background/Lamp/Lamp";
 
 function Features_Main() {

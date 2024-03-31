@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import { ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
-import { memo } from "react";
+
 export function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }

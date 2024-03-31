@@ -1,9 +1,8 @@
-"use client";
 import React from "react";
 import { ImageCard } from "./Cards";
 import clsx from "clsx";
-import FeatureCardChallengeDark1 from "@/public/feature_card_challenge_dark2.png";
-// import FeatureCardChallengeDark2 from "../../public/feature_card_challenge_dark2.png";
+import Dark1 from "@/public/feature_card_challenge_dark1.png";
+import Dark2 from "@/public/feature_card_challenge_dark2.png";
 
 function CAARD() {
   return (
@@ -26,8 +25,8 @@ function CAARD() {
             }
             bgClass="md:bg-gradient-to-br"
             image={{
-              dark1: FeatureCardChallengeDark1,
-              dark2: FeatureCardChallengeDark1,
+              dark1: Dark1,
+              dark2: Dark2,
 
               alt: "Something",
             }}
