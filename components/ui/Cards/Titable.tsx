@@ -38,7 +38,7 @@ const Titable = () => {
           duration: 2,
         }}
       >
-        <div className="stats stats-vertical lg:stats-horizontal shadow">
+        <div className="stats stats-vertical lg:stats-horizontal max-md:hidden overflow-hidden shadow">
           <div className="stat place-items-center">
             <div className="stat-title">{renderWords("Downloads", " ")}</div>
             <div className="stat-value"> {renderWords("31k", "")}</div>

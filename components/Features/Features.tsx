@@ -27,13 +27,13 @@ function Features() {
               className="rounded-md border border-gray-500 px-4 py-4 text-white shadow-xl transition duration-200 hover:scale-95 hover:shadow-[#06b6d4]/20"
               href="/problems"
             >
-              RoadMap
+              DSA Sheet
             </a>
             <a
               className="rounded-md border-2 border-[#06b6d4]/70 px-4 py-4 font-bold text-white shadow-xl transition duration-200 hover:scale-95 hover:shadow-[#06b6d4]/20"
               href="/frontend"
             >
-              Sheet
+              RoadMap
             </a>
           </div>
         </div>

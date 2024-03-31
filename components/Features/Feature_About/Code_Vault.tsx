@@ -48,7 +48,7 @@ export const ContainerScroll = ({
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
   const translate = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const translate2 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const translate2 = useTransform(scrollYProgress, [0, 1], [0, -300]);
   return (
     <div
       className=" flex items-center justify-center relative  "

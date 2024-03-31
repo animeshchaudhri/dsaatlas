@@ -43,7 +43,7 @@ function DSAAtlasFeatures() {
         <div className="w-full   flex flex-col lg:flex-row items-center justify-center ">
           <div className="relative max-w-154 flex items-center justify-center overflow-hidden rounded-[20px] md:rounded-[30px] border border-transparent">
             <div className="w-[40rem] flex items-center justify-center">
-              <div className="w-[32rem]">
+              <div className="w-[32rem] max-md:w-[20rem]	">
                 <CAARD />
               </div>
             </div>
