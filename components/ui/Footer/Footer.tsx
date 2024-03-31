@@ -13,7 +13,7 @@ export default function Footer() {
             className="group rounded-lg p-2"
             href="/"
           >
-            <span className="sr-only">"onGithub</span>
+            <span className="sr-only">onGithub</span>
             <Github className="h-5 w-5 duration-150 group-hover:scale-110 group-hover:fill-black dark:group-hover:fill-white" />
           </a>
           <a
@@ -22,7 +22,7 @@ export default function Footer() {
             className="group rounded-lg p-2"
             href="/"
           >
-            <span className="sr-only">onTwitter"</span>
+            <span className="sr-only">onTwitter</span>
             <Twitter className="h-5 w-5 duration-150 group-hover:scale-110 group-hover:fill-black dark:group-hover:fill-white" />
           </a>
         </div>

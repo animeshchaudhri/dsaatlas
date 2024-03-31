@@ -42,7 +42,7 @@ function Features_Main() {
                 Practice Algorithmic Questions
               </h1>
               <p className=" mb-6 max-w-lg text-left text-sm text-gray-400 lg:text-base">
-                Algorithmic questions are everywhere and even we don't like it.
+                Algorithmic questions are everywhere and even we dont like it.
                 But since companies are asking, we have a long list of questions
                 that are popularly asked in tech interviews. Some of the
                 concepts that are tested are:

@@ -1,4 +1,3 @@
-"use client";
 import { ContainerScroll } from "./Code_Vault";
 import Dummy from "../../Sheet/Dummy";
 import Titable from "../../ui/Cards/Titable";

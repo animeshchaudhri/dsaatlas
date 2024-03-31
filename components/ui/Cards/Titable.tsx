@@ -18,7 +18,7 @@ const Titable = () => {
         }
       );
     }
-  }, [isInView]);
+  });
 
   const renderWords = (text: any, classname: string) => {
     return (

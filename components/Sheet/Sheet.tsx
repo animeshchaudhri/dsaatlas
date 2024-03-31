@@ -26,7 +26,7 @@ export default function Sheet() {
   useEffect(() => {
     fetchSheetData(difficulty);
   }, [difficulty]);
-  const handleInputChange = (e:any) => {
+  const handleInputChange = (e: any) => {
     setSearchValue(e.target.value); // Update the state with the new value
   };
 
@@ -36,10 +36,11 @@ export default function Sheet() {
         <div className="mx-auto mt-20 min-h-screen max-w-7xl">
           <div className="flex flex-1 flex-row text-xs">
             <button
-              className="rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white border-[#06b6d4]"
+              className="rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white  border-slate-700"
               onClick={() => {
                 setDifficulty("easy");
               }}
+              style={{borderColor: "#06b6d4"}}
             >
               Easy
             </button>
@@ -112,9 +113,19 @@ export default function Sheet() {
                         </a>
                       </td>
                       <td className="px-2 ">
-                        <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-green-700 to-green-500 text-white px-2 py-0.5 text-sm mb-2">
-                          {item.difficulty}
-                        </span>
+                        {item.difficulty === "Easy" ? (
+                          <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-green-700 to-green-500 text-white px-2 py-0.5 text-sm mb-2">
+                            {item.difficulty}
+                          </span>
+                        ) : item.difficulty === "Hard" ? (
+                          <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-red-700 to-red-500 text-white px-2 py-0.5 text-sm mb-2">
+                            {item.difficulty}
+                          </span>
+                        ) : (
+                          <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-yellow-700 to-yellow-500 text-white px-2 py-0.5 text-sm mb-2">
+                            {item.difficulty}
+                          </span>
+                        )}
                       </td>
                       <td className=" items-center justify-start px-1">
                         {item.related_topics.split(",").map((topic: any) => (
