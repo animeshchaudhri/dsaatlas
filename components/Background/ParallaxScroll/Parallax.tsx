@@ -70,7 +70,7 @@ export default function Parallax() {
   return (
     <section>
       <ParallaxText baseVelocity={-4}>Crack Fang in 3 months</ParallaxText>
-      <ParallaxText baseVelocity={5}>Scroll velocity</ParallaxText>
+      <ParallaxText baseVelocity={5}>Company specific DSA</ParallaxText>
     </section>
   );
 }

@@ -1,11 +1,16 @@
 import CAARD from "@/components/ui/Cards/CAARD";
+import Lamp from "../../Background/Lamp/Lamp";
 
 function DSAAtlasFeatures() {
   return (
     <>
       <section
-        className="container mx-auto pt-36 overflow-hidden  bg-[url('../../../public/beams.jpg')"
+        className="container mx-auto pt-36 overflow-hidden bg-cover "
         id="About"
+        style={{
+          backgroundImage: `url('/beams.jpg')`,
+          height: "972px",
+        }}
       >
         <div className="mb-20">
           <section
@@ -13,56 +18,29 @@ function DSAAtlasFeatures() {
             style={{ fontSize: "42px" }}
           >
             <h2 className="mb-6 leading-snug">
-              <span
-                className="inline-block"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
-                Discover&nbsp;
-              </span>
+              <span className="inline-block">Discover&nbsp;</span>
 
-              <span
-                className="inline-block"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
-                the&nbsp;
-              </span>
-              <span
-                className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
+              <span className="inline-block">the&nbsp;</span>
+              <span className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3">
                 ultimate
               </span>
-              <span
-                className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
+              <span className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3">
                 destination
               </span>
-              <span
-                className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
+              <span className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3">
                 for&nbsp;
               </span>
-              <span
-                className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
+              <span className="inline-block  bg-clip-text text-transparent bg-gradient-to-r from-[#F0C78E] to-[#E98F81] mr-2.5 xl:mr-3">
                 DSA
               </span>
-              <span
-                className="inline-block"
-                style={{ fontFamily: "Inter", opacity: 1, transform: "none" }}
-              >
-                preparation
-              </span>
+              <span className="inline-block">preparation</span>
             </h2>
             <p className="text-[#54565B] 2xl:text-[#fff] font-light text-lg max-w-[344px] mb-5 mx-auto">
               Elevate your DSA skills with DSA Atlas by your side!
             </p>
           </section>
         </div>
-        <div className="w-full flex flex-col lg:flex-row items-center justify-center">
+        <div className="w-full   flex flex-col lg:flex-row items-center justify-center ">
           <div className="relative max-w-154 flex items-center justify-center overflow-hidden rounded-[20px] md:rounded-[30px] border border-transparent">
             <div className="w-[40rem] flex items-center justify-center">
               <div className="w-[32rem]">

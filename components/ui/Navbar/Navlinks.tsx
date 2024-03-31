@@ -5,7 +5,7 @@ function Navlinks() {
   return (
     <>
       <div>
-        <ul className="flex items-center md:ml-4 md:flex md:gap-4 ">
+        <ul className="flex items-center md:ml-4 md:flex md:gap-4 max-md:hidden">
           <Link
             href="/explore"
             className="hover:text-foreground text-foreground/80 transition-colors cursor-pointer"

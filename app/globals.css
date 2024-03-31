@@ -76,7 +76,9 @@ body {
 .parallax span {
   display: block;
   margin-right: 30px;
+  
 }
 ::-webkit-scrollbar {
   display: none;
+  
 }
