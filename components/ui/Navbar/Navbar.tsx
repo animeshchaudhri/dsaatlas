@@ -10,7 +10,7 @@ function Navbar() {
   console.log(userId);
   return (
     <>
-      <div className=" w-full flex justify-center items-centre mx-auto pl-6 pr-6">
+      <div className=" w-full flex  justify-center items-centre mx-auto pl-6 pr-6">
         <div
           className="flex w-full items-center justify-between h-14 text-sm font-medium mx-auto pl-6 pr-6 container"
           style={{ maxWidth: "950px" }}

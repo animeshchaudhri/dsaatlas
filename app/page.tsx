@@ -8,7 +8,7 @@ function App() {
     <>
       <div>
         <div className="relative w-full z-10 ">
-          <div className="w-full h-[50rem] absolute top-0 z-0 opacity-35 dark:bg-dot-white/[0.2] bg-dot-black/[0.2]"></div>
+          <div className="w-full h-[50rem] absolute top-0 -z-10 opacity-35 dark:bg-dot-white/[0.2] bg-dot-black/[0.2]"></div>
           <Navbar />
           <Spotlight className="absolute top-0 z-0" />
           <Hero />
