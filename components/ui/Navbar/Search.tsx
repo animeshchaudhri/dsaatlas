@@ -3,7 +3,7 @@ import { Button } from "../Buttons/Button";
 import { SearchIcon } from "lucide-react";
 import React from "react";
 
-export default function SearchBar({ setOpen }: { setOpen: (v: any) => void }) {
+export default function SearchBar() {
   const cmdOrCtrl = "Ctrl ";
   return (
     <>
@@ -11,7 +11,6 @@ export default function SearchBar({ setOpen }: { setOpen: (v: any) => void }) {
       <button
         aria-label="mobile search icon"
         className="rounded-lg p-2 focus:outline-none focus-visible:ring-2 lg:hidden"
-        onClick={() => setOpen(true)}
       >
         <SearchIcon className="h-5 w-5" />
       </button>
@@ -20,7 +19,6 @@ export default function SearchBar({ setOpen }: { setOpen: (v: any) => void }) {
       <Button
         variant="outline"
         className="text-muted-foreground hidden w-64 justify-between gap-3 text-sm lg:inline-flex"
-        onClick={() => setOpen(true)}
       >
         <SearchIcon />
         <span className="sm:hidden">Search</span>
