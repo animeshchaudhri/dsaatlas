@@ -7,7 +7,7 @@ import {
   MotionValue,
   easeIn,
 } from "framer-motion";
-
+import SmoothScroll from "./Smooth.jsx";
 import { Sidebar } from "@/components/ui/Navbar/Sidebar";
 export type Playlist = (typeof playlists)[number];
 export const playlists = [
@@ -53,8 +53,8 @@ export const ContainerScroll = ({
 
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
-  const translate2 = useTransform(scrollYProgress, [0, 1], [0, -400]);
+  const translate = useTransform(scrollYProgress, [0, 1], [0, -60]);
+  const translate2 = useTransform(scrollYProgress, [0, 1], [0, -100]);
   return (
     <div
       className=" flex items-center justify-center relative  "
@@ -114,8 +114,9 @@ export const Card = ({
         <div className=" h-full w-full  overflow-hidden rounded-2xl bg-gray-100 dark:bg-zinc-900 md:rounded-2xl md:p-4 ">
           <div className="grid lg:grid-cols-5 ">
             <Sidebar playlists={playlists} className="hidden lg:block " />
+
             <motion.div
-              style={{ translateY: translate }}
+              // style={{ translateY: translate }}
               className="col-span-3 lg:col-span-4 h-full"
             >
               {children}

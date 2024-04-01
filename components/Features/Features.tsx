@@ -1,16 +1,20 @@
+"use client";
 import Features_Main from "./Features_main/Features_Main";
 import Feature_About from "./Feature_About/Feature_About";
 import Parallax from "../Background/ParallaxScroll/Parallax";
 import FeatureCards from "./Feature_Cards/FeatureCards";
-
+import SmoothScroll from "./Feature_About/Smooth.jsx";
 function Features() {
   return (
     <>
       <Feature_About />
-      <Features_Main />
-      <Parallax />
-      <FeatureCards />
 
+      <Features_Main />
+    
+        <Parallax />
+
+        <FeatureCards />
+      
       <div className="relative rounded-hd mt-10 py-20 lg:py-40">
         <div className="gridSlate absolute  opacity-35 inset-0 border-b border-slate-100/5 bg-bottom bg-grid-slate-400/[0.05]"></div>
         <div className="relative">
