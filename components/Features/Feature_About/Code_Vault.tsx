@@ -1,6 +1,12 @@
 "use client";
 import React, { useRef } from "react";
-import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
+import {
+  useScroll,
+  useTransform,
+  motion,
+  MotionValue,
+  easeIn,
+} from "framer-motion";
 
 import { Sidebar } from "@/components/ui/Navbar/Sidebar";
 export type Playlist = (typeof playlists)[number];
@@ -47,8 +53,8 @@ export const ContainerScroll = ({
 
   const rotate = useTransform(scrollYProgress, [0, 1], [20, 0]);
   const scale = useTransform(scrollYProgress, [0, 1], scaleDimensions());
-  const translate = useTransform(scrollYProgress, [0, 1], [0, -90]);
-  const translate2 = useTransform(scrollYProgress, [0, 1], [0, -300]);
+  const translate = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const translate2 = useTransform(scrollYProgress, [0, 1], [0, -400]);
   return (
     <div
       className=" flex items-center justify-center relative  "
