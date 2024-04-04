@@ -116,7 +116,7 @@ export const Card = ({
             <Sidebar playlists={playlists} className="hidden lg:block " />
 
             <motion.div
-              // style={{ translateY: translate }}
+              style={{ translateY: translate }}
               className="col-span-3 lg:col-span-4 h-full"
             >
               {children}
@@ -127,3 +127,5 @@ export const Card = ({
     </>
   );
 };
+
+

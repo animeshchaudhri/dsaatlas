@@ -69,7 +69,7 @@ function ParallaxText({ children, baseVelocity = 100 }: ParallaxProps) {
 export default function Parallax() {
   return (
     <section>
-      <ParallaxText baseVelocity={-4}>Crack Fang in 3 months</ParallaxText>
+      <ParallaxText baseVelocity={-4}>Crack Faang in 3 months</ParallaxText>
       <ParallaxText baseVelocity={5}>Company specific DSA</ParallaxText>
     </section>
   );
