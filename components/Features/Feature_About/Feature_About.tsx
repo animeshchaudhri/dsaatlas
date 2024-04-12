@@ -34,8 +34,8 @@
 import Code_Vault from "./Code_Vault";
 function Feature_About() {
   return (
-    <div className="flex flex-col items-center mt-40  overflow-hidden ">
-      <h1 className="mb-6 text-left text-2xl font-semibold lg:text-4xl">
+    <div className="flex flex-col items-center mt-40  justify-center overflow-hidden ">
+      <h1 className="mb-6  text-center	 text-2xl font-semibold lg:text-4xl">
         Real world questions for Technical Interviews
       </h1>
       <p className="mx-auto mb-6 max-w-2xl px-2 text-center text-sm leading-7 text-gray-400 lg:text-base">
