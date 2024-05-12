@@ -6,6 +6,7 @@ interface ChallengeCardProps {
   numComments: number;
   numLikes: number;
   timestamp: string;
+  description: string;
 }
 
 export const ChallengeCard: React.FC<ChallengeCardProps> = ({
@@ -14,6 +15,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({
   numComments,
   numLikes,
   timestamp,
+  description,
 }) => {
   return (
     <a
@@ -109,6 +111,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
+          {description}
         </div>
       </div>
     </a>
@@ -121,6 +124,7 @@ export const AnotherChallengeCard: React.FC<ChallengeCardProps> = ({
   numComments,
   numLikes,
   timestamp,
+  description,
 }) => {
   return (
     <a
@@ -215,6 +219,7 @@ export const AnotherChallengeCard: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
+          {description}
         </div>
       </div>
     </a>
@@ -227,6 +232,7 @@ export const MEDIUM_Card: React.FC<ChallengeCardProps> = ({
   numComments,
   numLikes,
   timestamp,
+  description,
 }) => {
   return (
     <a
@@ -320,6 +326,7 @@ export const MEDIUM_Card: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
+          {description}
         </div>
       </div>
     </a>
@@ -332,6 +339,7 @@ export const Easy_Card: React.FC<ChallengeCardProps> = ({
   numComments,
   numLikes,
   timestamp,
+  description,
 }) => {
   return (
     <a
@@ -426,6 +434,7 @@ export const Easy_Card: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
+          {description}
         </div>
       </div>
     </a>

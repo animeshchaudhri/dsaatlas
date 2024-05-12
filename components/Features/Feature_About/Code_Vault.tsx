@@ -161,7 +161,7 @@ function Code_Vault() {
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
     >
-      <div className=" showcase overflow-hidden container  mx-10 max-w-4xl image-container  transform rounded-xl bg-gradient-to-r from-cyan-700 to-cyan-500 p-2 ">
+      <div className=" showcase overflow-hidden  mx-10 max-w-4xl image-container  transform rounded-xl bg-gradient-to-r from-cyan-700 to-cyan-500 p-2 ">
         <Image src={Placehold} priority={true} alt="somthing" />
       </div>
     </motion.div>

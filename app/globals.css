@@ -102,3 +102,16 @@ body {
   overflow: hidden;
   will-change: transform;
 }
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 1400px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+@media (min-width: 768px) {
+  .container {
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+}

@@ -11,7 +11,6 @@ function Hero() {
           </div>
           <Editor />
         </div>
-        <div></div>
       </div>
     </>
   );
