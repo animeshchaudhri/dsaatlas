@@ -17,10 +17,7 @@ const Mermaid: React.FC<MermaidProps> = ({ text }) => {
       logLevel: 5,
     });
 
-    return () => {
-      // Cleanup function to prevent memory leaks
-      mermaid.mermaidAPI.reset();
-    };
+    
   }, []);
 
   useEffect(() => {
