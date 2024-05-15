@@ -5,7 +5,6 @@ import { Checkbox } from "@/components/ui/Checkbox";
 import { useState, useEffect } from "react";
 import SkeletonLoader from "./Loading";
 import { Suspense } from "react";
-import {clsx} from 'clsx';
 
 export default function Sheet() {
   const [difficulty, setDifficulty] = useState("easy");
@@ -38,16 +37,17 @@ export default function Sheet() {
       <div className="flex flex-col justify-center gap-20 ">
         <div className="mx-auto mt-20 min-h-screen max-w-7xl">
           <div className="flex flex-1 flex-row text-xs">
-          <button
-              className={clsx("rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white  border-slate-700", {"border-[#06b6d4]" : difficulty=="easy"})}
+            <button
+              className="rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white  border-slate-700"
               onClick={() => {
                 setDifficulty("easy");
               }}
+              style={{ borderColor: "#06b6d4" }}
             >
               Easy
             </button>
             <button
-              className={clsx("border px-2 py-2 tracking-wider text-white border-slate-700", {"border-[#06b6d4]" : difficulty=="medium"})}
+              className="border px-2 py-2 tracking-wider text-white border-slate-700"
               onClick={() => {
                 setDifficulty("medium");
               }}
@@ -55,7 +55,7 @@ export default function Sheet() {
               Medium
             </button>
             <button
-              className={clsx("rounded-tr rounded-br border px-2 py-2 tracking-wider text-white border-slate-700", {"border-[#06b6d4]" : difficulty=="hard"})}
+              className="rounded-tr rounded-br border px-2 py-2 tracking-wider text-white border-slate-700"
               onClick={() => {
                 setDifficulty("hard");
               }}
