@@ -3,11 +3,13 @@
 import sheetcall from "../../app/api/sheet";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { useState, useEffect } from "react";
-import SkeletonLoader from "./Loading";
-import { Suspense } from "react";
+import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
+import {clsx} from 'clsx';
 
 export default function Sheet() {
   const [difficulty, setDifficulty] = useState("easy");
+  const [isLoading, setLoading] = useState(true);
   const [sheetData, setSheetData] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // State to hold the input value
 
@@ -17,14 +19,12 @@ export default function Sheet() {
       const jsonData = await sheetData.json();
 
       setSheetData(jsonData);
+      setLoading(false);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }
   };
 
-  useEffect(() => {
-    fetchSheetData(difficulty);
-  }, [difficulty]);
   useEffect(() => {
     fetchSheetData(difficulty);
   }, [difficulty]);
@@ -38,25 +38,27 @@ export default function Sheet() {
         <div className="mx-auto mt-20 min-h-screen max-w-7xl">
           <div className="flex flex-1 flex-row text-xs">
             <button
-              className="rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white  border-slate-700"
+              className={clsx("rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white", {"border-[#06b6d4]" : difficulty=="easy", "border-slate-700" : difficulty != "easy"})}
               onClick={() => {
+                setLoading(true);
                 setDifficulty("easy");
               }}
-              style={{ borderColor: "#06b6d4" }}
             >
               Easy
             </button>
             <button
-              className="border px-2 py-2 tracking-wider text-white border-slate-700"
+              className={clsx("border px-2 py-2 tracking-wider text-white", {"border-[#06b6d4]" : difficulty=="medium", "border-slate-700" : difficulty != "medium"})}
               onClick={() => {
+                setLoading(true);
                 setDifficulty("medium");
               }}
             >
               Medium
             </button>
             <button
-              className="rounded-tr rounded-br border px-2 py-2 tracking-wider text-white border-slate-700"
+              className={clsx("rounded-tr rounded-br border px-2 py-2 tracking-wider text-white", {"border-[#06b6d4]" : difficulty=="hard", "border-slate-700" : difficulty != "hard"})}
               onClick={() => {
+                setLoading(true);
                 setDifficulty("hard");
               }}
             >
@@ -70,7 +72,6 @@ export default function Sheet() {
               onChange={handleInputChange}
             />
           </div>
-
           <div className="flex items-center mt-10 justify-center">
             <div className="rounded-md border w-[60rem]  border-gray-700">
               <table
@@ -93,8 +94,25 @@ export default function Sheet() {
                 </thead>
 
                 <tbody className="divide-y divide-gray-700 text-sm">
-                  <Suspense fallback={<SkeletonLoader />}>
-                    {sheetData.map((item: any) => (
+                    {isLoading? 
+                    <SkeletonTheme
+                    baseColor="#334154"
+                    highlightColor="#06b6d4"
+                    borderRadius="0.5rem"
+                    duration={4}>
+                    {[...Array(20)].map((e, i) => (
+                      <tr key={i} className="w-full bg-[#12151D] hover:bg-gray-900">
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                      </tr>
+                    ))}
+                    </SkeletonTheme>
+                    :
+                    sheetData.map((item: any) => (
                       <tr
                         key={item._id}
                         className="w-full bg-[#12151D] hover:bg-gray-900"
@@ -169,7 +187,6 @@ export default function Sheet() {
                         </td>
                       </tr>
                     ))}
-                  </Suspense>
                 </tbody>
               </table>
             </div>
