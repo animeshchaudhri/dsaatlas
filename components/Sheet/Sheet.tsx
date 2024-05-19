@@ -112,7 +112,9 @@ export default function Sheet() {
                     ))}
                     </SkeletonTheme>
                     :
-                    sheetData.map((item: any) => (
+                    sheetData
+                    .filter((i:any) => (i.title.includes(searchValue) || i.description.includes(searchValue)))
+                    .map((item: any) => (
                       <tr
                         key={item._id}
                         className="w-full bg-[#12151D] hover:bg-gray-900"
