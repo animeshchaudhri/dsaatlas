@@ -5,11 +5,11 @@ import SmoothScroll from "@/components/Features/Feature_About/Smooth.jsx";
 function page() {
   return (
     <div>
-      <SmoothScroll>
-        <Navbar />
-        <Sheet />
-        <Footer />
-      </SmoothScroll>
+      {/* <SmoothScroll> */}
+      <Navbar />
+      <Sheet />
+      <Footer />
+      {/* </SmoothScroll> */}
     </div>
   );
 }
