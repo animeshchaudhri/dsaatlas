@@ -1,5 +1,7 @@
 export default async function sheetcall(Difficulty: string) {
-  const data = fetch(`http://4.213.40.108/${Difficulty}`);
+  const data = fetch(
+    `https://helixsnagglefoot-collar.toystack.dev/${Difficulty}`
+  );
   const response = await data;
 
   return response;
