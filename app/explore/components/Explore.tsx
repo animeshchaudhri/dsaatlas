@@ -9,12 +9,14 @@ import {
 import Badge from "./Badge";
 import { useEffect, useRef, useState } from "react";
 import { companycall } from "@/app/api/sheet";
+import SkeletonBox from "./SkeltonBox";
 
 function Explore() {
   const [amazondata, setAmazonData] = useState([]);
   const [microsoftdata, setMicrosoftData] = useState([]);
   const [googledata, setGoogleData] = useState([]);
   const [Uberdata, setUberData] = useState([]);
+  const [isLoading, setLoading] = useState(true);
 
   const callamazondata = async () => {
     const data = await companycall("Amazon");
@@ -90,10 +92,12 @@ function Explore() {
     />
   ));
   useEffect(() => {
-    callamazondata();
-    callgoogledata();
-    callmicrosoftdata();
-    calluberdata();
+    callamazondata().then(() => {
+    callgoogledata().then(() => {
+    callmicrosoftdata().then(() => {
+    calluberdata().then(() =>{
+      setLoading(false);
+    });});})})
   }, []);
 
   return (
@@ -113,41 +117,49 @@ function Explore() {
         <Badge tag="EASY" title="Amazon" />
         <section className="relative flex w-full flex-col overflow-hidden rounded-[2.5rem]">
           <div
-            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20"
+            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20 h-[300px]"
             id="container"
           >
-            {anotherChallengeCards}
+            {isLoading ?
+             <SkeletonBox />
+             : anotherChallengeCards}
           </div>
         </section>
         <Badge tag="MEDIUM" title="Google" />
 
         <section className="relative flex w-full flex-col overflow-hidden rounded-[2.5rem]">
           <div
-            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20"
+            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20 h-[300px]"
             id="container"
           >
-            {challengeCards}
+            {isLoading ?
+             <SkeletonBox />
+             : challengeCards}
           </div>
         </section>
 
         <Badge tag="BEGINNER" title="Uber" />
         <section className="relative flex w-full flex-col overflow-hidden rounded-[2.5rem]">
           <div
-            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20"
+            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20 h-[300px]"
             id="container"
           >
-            {easyCards}
+            {isLoading ?
+             <SkeletonBox />
+             : easyCards}
           </div>
         </section>
 
         <Badge tag="EXTREME" title="Microsoft" />
         <section className="relative flex w-full flex-col overflow-hidden rounded-[2.5rem]">
           <div
-            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20"
+            className="hide-scrollbar flex w-full snap-x flex-nowrap gap-4 overflow-x-scroll scroll-smooth p-6 px-4 md:px-20 h-[300px]"
             id="container"
           >
             {" "}
-            {mediumCards}
+            {isLoading ?
+             <SkeletonBox />
+             : mediumCards}
           </div>
         </section>
       </div>
@@ -156,3 +168,5 @@ function Explore() {
 }
 
 export default Explore;
+
+

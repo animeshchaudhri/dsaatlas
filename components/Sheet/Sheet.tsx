@@ -6,7 +6,6 @@ import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { clsx } from "clsx";
-import Navbar from "../ui/Navbar/Navbar";
 
 export default function Sheet() {
   const [difficulty, setDifficulty] = useState("Easy");
@@ -265,10 +264,24 @@ export default function Sheet() {
                     ))}
                 </tbody>
               </table>
+              <SkeltonBox />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+}
+
+function SkeltonBox() {
+  return(
+    <SkeletonTheme
+    baseColor="#334154"
+    highlightColor="#06b6d4"
+    borderRadius="0.5rem"
+    duration={4}><div className="flex gap-12 h-[300] w-full">
+    <Skeleton width={333} height={238} />
+    <Skeleton width={333} height={238} />
+  </div>
+  </SkeletonTheme>)
 }
