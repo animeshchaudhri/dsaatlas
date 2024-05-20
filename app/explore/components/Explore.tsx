@@ -20,25 +20,21 @@ function Explore() {
     const data = await companycall("Amazon");
     const response = await data.json();
     setAmazonData(response);
-    console.log(response);
   };
   const callmicrosoftdata = async () => {
     const data = await companycall("Microsoft");
     const response = await data.json();
     setMicrosoftData(response);
-    console.log(response);
   };
   const callgoogledata = async () => {
     const data = await companycall("Google");
     const response = await data.json();
     setGoogleData(response);
-    console.log(response);
   };
   const calluberdata = async () => {
     const data = await companycall("Facebook");
     const response = await data.json();
     setUberData(response);
-    console.log(response);
   };
 
   const challengeCards = amazondata.map((item: any) => (

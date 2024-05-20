@@ -1,19 +1,33 @@
 "use client";
 
-import sheetcall, { companycall } from "../../app/api/sheet";
+import sheetcall, {
+  addUserQuestions,
+  companycall,
+  getUserQuestions,
+} from "../../app/api/sheet";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { clsx } from "clsx";
-import Navbar from "../ui/Navbar/Navbar";
+import { auth } from "@clerk/nextjs";
 
-export default function Sheet() {
+interface Question {
+  _id: string;
+  title: string;
+  description: string;
+  difficulty: string;
+  related_topics: string;
+}
+
+export default function Sheet(user_id: any) {
   const [difficulty, setDifficulty] = useState("Easy");
   const [isLoading, setLoading] = useState(true);
   const [sheetData, setSheetData] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // State to hold the input value
   const [company, setCompany] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [userQuestions, setUserQuestions] = useState([]);
 
   const fetchSheetData = async (difficulty: any) => {
     try {
@@ -27,18 +41,65 @@ export default function Sheet() {
     }
   };
 
-  useEffect(() => {
-    if(company === "") {
-    fetchSheetData(difficulty);
+  const fetchUserQuestions = async (): Promise<void> => {
+    try {
+      const response = await getUserQuestions(user_id!); // Fetch user's questions
+      const userQuestionsData = await response.json();
+      setUserQuestions(userQuestionsData);
+    } catch (error) {
+      console.error("Failed to fetch user's questions:", error);
     }
-    else{
+  };
+
+  useEffect(() => {
+    if (company === "") {
+      fetchSheetData(difficulty);
+    } else {
       setLoading(false);
     }
   }, [difficulty, company]);
 
+  useEffect(() => {
+    // Fetch user's questions when the component mounts
+    fetchUserQuestions();
+  }, []);
   const handleInputChange = (e: any) => {
     setSearchValue(e.target.value); // Update the state with the new value
   };
+
+  const handleCheckboxChange = async (
+    questionId: string,
+    isChecked: boolean
+  ): Promise<void> => {
+    try {
+      if (isChecked) {
+        // Remove the question from the user's list
+        const filteredQuestions = userQuestions.filter(
+          (question) => question._id !== questionId
+        );
+        setUserQuestions(filteredQuestions);
+        await addUserQuestions(
+          userId!,
+          filteredQuestions.map((question) => question._id)
+        );
+      } else {
+        // Add the question to the user's list
+        const questionToAdd = sheetData.find(
+          (question) => question._id === questionId
+        );
+        if (questionToAdd) {
+          setUserQuestions([...userQuestions, questionToAdd]);
+          await addUserQuestions(userId!, [
+            ...userQuestions.map((question) => question._id),
+            questionId,
+          ]);
+        }
+      }
+    } catch (error) {
+      console.error("Failed to update user's questions:", error);
+    }
+  };
+
   const getDatabycompany = async (company: any) => {
     try {
       const sheetData = await companycall(company);
@@ -50,10 +111,6 @@ export default function Sheet() {
       console.error("Failed to fetch data:", error);
     }
   };
-
-  // useEffect(() => {
-  //   getDatabycompany(company);
-  // }, [company]);
 
   const handleChange = (event: any) => {
     setCompany(event.target.value);
@@ -168,101 +225,133 @@ export default function Sheet() {
                 </thead>
 
                 <tbody className="divide-y divide-gray-700 text-sm">
-                    {isLoading? 
+                  {isLoading ? (
                     <SkeletonTheme
-                    baseColor="#334154"
-                    highlightColor="#06b6d4"
-                    borderRadius="0.5rem"
-                    duration={4}>
-                    {[...Array(20)].map((e, i) => (
-                      <tr key={i} className="w-full bg-[#12151D] hover:bg-gray-900">
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                      </tr>
-                    ))}
+                      baseColor="#334154"
+                      highlightColor="#06b6d4"
+                      borderRadius="0.5rem"
+                      duration={4}
+                    >
+                      {[...Array(20)].map((e, i) => (
+                        <tr
+                          key={i}
+                          className="w-full bg-[#12151D] hover:bg-gray-900"
+                        >
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                        </tr>
+                      ))}
                     </SkeletonTheme>
-                    :
+                  ) : (
                     sheetData
-                    .filter((i:any) => ((i.title.includes(searchValue) || i.description.includes(searchValue)) && i.difficulty === difficulty))
-                    .map((item: any) => (
-                      <tr
-                        key={item._id}
-                        className="w-full bg-[#12151D] hover:bg-gray-900"
-                      >
-                        <td className="px-2 py-4">
-                          <span className="ml-2 inline-block">
-                            <Checkbox />
-                          </span>
-                        </td>
-                        <td className="px-2">
-                          <a
-                            className="transition duration-200 hover:text-[#06b6d4]"
-                            href={item.url}
-                          >
-                            {item.title}
-                          </a>
-                        </td>
-                        <td className="w-[40%] truncate px-2">
-                          <a
-                            className="transition duration-200 hover:text-[#06b6d4]"
-                            href={item.url}
-                          >
-                            {item.description}
-                          </a>
-                        </td>
-                        <td className="px-2 ">
-                          {item.difficulty === "Easy" ? (
-                            <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-green-700 to-green-500 text-white px-2 py-0.5 text-sm mb-2">
-                              {item.difficulty}
+                      .filter(
+                        (i: any) =>
+                          (i.title.includes(searchValue) ||
+                            i.description.includes(searchValue)) &&
+                          i.difficulty === difficulty
+                      )
+                      .map((item: any) => (
+                        <tr
+                          key={item._id}
+                          className="w-full bg-[#12151D] hover:bg-gray-900"
+                        >
+                          <td className="px-2 py-4">
+                            <span className="ml-2 inline-block">
+                              <Checkbox
+                                key={item._id}
+                                checked={userQuestions.some(
+                                  (question) => question._id === item._id
+                                )}
+                                // onChange={(isChecked: boolean) =>
+                                //   handleCheckboxChange(item._id, isChecked)
+                                // }
+                              />
                             </span>
-                          ) : item.difficulty === "Hard" ? (
-                            <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-red-700 to-red-500 text-white px-2 py-0.5 text-sm mb-2">
-                              {item.difficulty}
-                            </span>
-                          ) : (
-                            <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-yellow-700 to-yellow-500 text-white px-2 py-0.5 text-sm mb-2">
-                              {item.difficulty}
-                            </span>
-                          )}
-                        </td>
-                        <td className=" items-center justify-start px-1">
-                          {item.related_topics.split(",").map((topic: any) => (
+                          </td>
+                          <td className="px-2">
                             <a
-                              key={topic}
-                              className="mr-1 inline-block rounded-md px-1 py-0.5 capitalize hover:text-[#06b6d4]"
-                              href={`/tags/${topic.trim()}`}
+                              className="transition duration-200 hover:text-[#06b6d4]"
+                              href={item.url}
                             >
-                              {topic.trim()}
+                              {item.title}
                             </a>
-                          ))}
-                        </td>
-                        <td className="">
-                          <a
-                            className="flex items-center justify-center"
-                            href={item.url}
-                          >
-                            <svg
-                              xmlns="http://www.w3.org/2000/svg"
-                              className="h-6 w-6 rotate-180 transform font-bold text-[#06b6d4]"
-                              fill="none"
-                              viewBox="0 0 24 24"
-                              stroke="currentColor"
-                              strokeWidth="2"
+                          </td>
+                          <td className="w-[40%] truncate px-2">
+                            <a
+                              className="transition duration-200 hover:text-[#06b6d4]"
+                              href={item.url}
                             >
-                              <path
-                                strokeLinecap="round"
-                                strokeLinejoin="round"
-                                d="M7 16l-4-4m0 0l4-4m-4 4h18"
-                              ></path>
-                            </svg>
-                          </a>
-                        </td>
-                      </tr>
-                    ))}
+                              {item.description}
+                            </a>
+                          </td>
+                          <td className="px-2 ">
+                            {item.difficulty === "Easy" ? (
+                              <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-green-700 to-green-500 text-white px-2 py-0.5 text-sm mb-2">
+                                {item.difficulty}
+                              </span>
+                            ) : item.difficulty === "Hard" ? (
+                              <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-red-700 to-red-500 text-white px-2 py-0.5 text-sm mb-2">
+                                {item.difficulty}
+                              </span>
+                            ) : (
+                              <span className="inline-block w-20 capitalize rounded-sm bg-gradient-to-r from-yellow-700 to-yellow-500 text-white px-2 py-0.5 text-sm mb-2">
+                                {item.difficulty}
+                              </span>
+                            )}
+                          </td>
+                          <td className=" items-center justify-start px-1">
+                            {item.related_topics
+                              .split(",")
+                              .map((topic: any) => (
+                                <a
+                                  key={topic}
+                                  className="mr-1 inline-block rounded-md px-1 py-0.5 capitalize hover:text-[#06b6d4]"
+                                  href={`/tags/${topic.trim()}`}
+                                >
+                                  {topic.trim()}
+                                </a>
+                              ))}
+                          </td>
+                          <td className="">
+                            <a
+                              className="flex items-center justify-center"
+                              href={item.url}
+                            >
+                              <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                className="h-6 w-6 rotate-180 transform font-bold text-[#06b6d4]"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                strokeWidth="2"
+                              >
+                                <path
+                                  strokeLinecap="round"
+                                  strokeLinejoin="round"
+                                  d="M7 16l-4-4m0 0l4-4m-4 4h18"
+                                ></path>
+                              </svg>
+                            </a>
+                          </td>
+                        </tr>
+                      ))
+                  )}
                 </tbody>
               </table>
             </div>

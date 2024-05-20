@@ -8,7 +8,7 @@ import {
   HarmBlockThreshold,
 } from "@google/generative-ai";
 
-const API_KEY = "AIzaSyAkCiAV3PE4cXdcW-lDDVis7jfSNYL_vjE";
+const API_KEY = process.env.KEY;
 const MODEL_NAME = "gemini-1.5-pro-latest";
 
 export default async function handler(
@@ -22,7 +22,7 @@ export default async function handler(
   try {
     const { userInput } = req.body;
     console.log(userInput);
-    const genAI = new GoogleGenerativeAI(API_KEY);
+    const genAI = new GoogleGenerativeAI(API_KEY ?? "hey");
     const model = genAI.getGenerativeModel({ model: MODEL_NAME });
 
     const generationConfig = {
