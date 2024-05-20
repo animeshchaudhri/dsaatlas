@@ -364,7 +364,6 @@ export default function Sheet(user_id: any) {
                   )}
                 </tbody>
               </table>
-              <SkeltonBox />
             </div>
           </div>
         </div>
