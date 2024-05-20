@@ -49,7 +49,7 @@ const Badge: React.FC<BadgeProps> = ({ tag, title }) => {
           {title}
         </h2>
       </div>
-      <ViewMoreButton redirectRoute="/" tag={tag} />
+      <ViewMoreButton redirectRoute="/sheet" tag={tag} />
     </div>
   );
 };

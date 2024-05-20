@@ -23,33 +23,37 @@ interface Question {
 export default function Sheet(user_id: any) {
   const [difficulty, setDifficulty] = useState("Easy");
   const [isLoading, setLoading] = useState(true);
-  const [sheetData, setSheetData] = useState([]);
+
   const [searchValue, setSearchValue] = useState(""); // State to hold the input value
   const [company, setCompany] = useState("");
   const [checked, setChecked] = useState(false);
-  const [userQuestions, setUserQuestions] = useState([]);
+  // const [userQuestions, setUserQuestions] = useState<Question[]>([]);
+  const [sheetData, setSheetData] = useState<Question[]>([]);
 
   const fetchSheetData = async (difficulty: any) => {
     try {
       const sheetData = await sheetcall(difficulty);
       const jsonData = await sheetData.json();
 
-      setSheetData(jsonData);
+      setSheetData(jsonData );
+
       setLoading(false);
     } catch (error) {
       console.error("Failed to fetch data:", error);
     }
   };
 
-  const fetchUserQuestions = async (): Promise<void> => {
-    try {
-      const response = await getUserQuestions(user_id!); // Fetch user's questions
-      const userQuestionsData = await response.json();
-      setUserQuestions(userQuestionsData);
-    } catch (error) {
-      console.error("Failed to fetch user's questions:", error);
-    }
-  };
+  // const fetchUserQuestions = async (): Promise<void> => {
+  //   try {
+  //     console.log(user_id.user_id);
+  //     const response = await getUserQuestions(user_id.user_id!); // Fetch user's questions
+  //     const userQuestionsData = await response.json();
+  //     setUserQuestions(userQuestionsData as Question[]);
+  //     console.log(userQuestionsData);
+  //   } catch (error) {
+  //     console.error("Failed to fetch user's questions:", error);
+  //   }
+  // };
 
   useEffect(() => {
     if (company === "") {
@@ -59,46 +63,51 @@ export default function Sheet(user_id: any) {
     }
   }, [difficulty, company]);
 
-  useEffect(() => {
-    // Fetch user's questions when the component mounts
-    fetchUserQuestions();
-  }, []);
+  // useEffect(() => {
+  //   // Fetch user's questions when the component mounts
+  //   fetchUserQuestions();
+  // }, []);
   const handleInputChange = (e: any) => {
     setSearchValue(e.target.value); // Update the state with the new value
   };
 
-  const handleCheckboxChange = async (
-    questionId: string,
-    isChecked: boolean
-  ): Promise<void> => {
-    try {
-      if (isChecked) {
-        // Remove the question from the user's list
-        const filteredQuestions = userQuestions.filter(
-          (question) => question._id !== questionId
-        );
-        setUserQuestions(filteredQuestions);
-        await addUserQuestions(
-          userId!,
-          filteredQuestions.map((question) => question._id)
-        );
-      } else {
-        // Add the question to the user's list
-        const questionToAdd = sheetData.find(
-          (question) => question._id === questionId
-        );
-        if (questionToAdd) {
-          setUserQuestions([...userQuestions, questionToAdd]);
-          await addUserQuestions(userId!, [
-            ...userQuestions.map((question) => question._id),
-            questionId,
-          ]);
-        }
-      }
-    } catch (error) {
-      console.error("Failed to update user's questions:", error);
-    }
-  };
+  // const handleCheckboxChange = async (
+  //   questionId: string,
+  //   event: any
+  // ): Promise<void> => {
+  //   const isChecked = event.target.getAttribute("aria-checked");
+  //   console.log(isChecked);
+  //   try {
+  //     if (isChecked) {
+  //       const questionToAdd = sheetData.find(
+  //         (question) => question._id === questionId
+  //       );
+  //       if (questionToAdd) {
+  //         setUserQuestions([...userQuestions, questionToAdd]);
+  //         await addUserQuestions(user_id.user_id!, [
+  //           ...userQuestions.map((question: any) => question._id),
+  //           questionId,
+  //         ]);
+  //         console.log(userQuestions);
+  //         // Remove the question from the user's list
+  //       } else {
+  //         // Add the question to the user's list
+  //         const filteredQuestions = userQuestions.filter(
+  //           (question: any) => question._id !== questionId
+  //         );
+  //         setUserQuestions(filteredQuestions);
+  //         const data = await addUserQuestions(
+  //           user_id.user_id!,
+  //           filteredQuestions.map((question: any) => question._id)
+  //         );
+  //         console.log(data);
+  //         // console.log(userQuestions);
+  //       }
+  //     }
+  //   } catch (error) {
+  //     console.error("Failed to update user's questions:", error);
+  //   }
+  // };
 
   const getDatabycompany = async (company: any) => {
     try {
@@ -274,12 +283,13 @@ export default function Sheet(user_id: any) {
                           <td className="px-2 py-4">
                             <span className="ml-2 inline-block">
                               <Checkbox
-                                key={item._id}
-                                checked={userQuestions.some(
-                                  (question) => question._id === item._id
-                                )}
-                                // onChange={(isChecked: boolean) =>
-                                //   handleCheckboxChange(item._id, isChecked)
+                                // key={item._id}
+                                // checked={userQuestions.some(
+                                //   (question: any) => question._id === item._id
+                                // )}
+                              
+                                // onClick={(event: any) =>
+                                //   handleCheckboxChange(item._id, event)
                                 // }
                               />
                             </span>
@@ -363,16 +373,18 @@ export default function Sheet(user_id: any) {
   );
 }
 
-
 function SkeltonBox() {
-  return(
+  return (
     <SkeletonTheme
-    baseColor="#334154"
-    highlightColor="#06b6d4"
-    borderRadius="0.5rem"
-    duration={4}><div className="flex gap-12 h-[300] w-full">
-    <Skeleton width={333} height={238} />
-    <Skeleton width={333} height={238} />
-  </div>
-  </SkeletonTheme>)
+      baseColor="#334154"
+      highlightColor="#06b6d4"
+      borderRadius="0.5rem"
+      duration={4}
+    >
+      <div className="flex gap-12 h-[300] w-full">
+        <Skeleton width={333} height={238} />
+        <Skeleton width={333} height={238} />
+      </div>
+    </SkeletonTheme>
+  );
 }
