@@ -115,3 +115,12 @@ body {
     padding-right: 6rem;
   }
 }
+
+select {
+  background: transparent;
+  -webkit-appearance: none;
+}
+
+select option{
+background-color: #82caff;
+}

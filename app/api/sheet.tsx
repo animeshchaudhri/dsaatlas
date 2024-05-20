@@ -6,3 +6,9 @@ export default async function sheetcall(Difficulty: string) {
 
   return response;
 }
+export async function companycall(company: string) {
+  const data = fetch(`https://helixsnagglefoot-collar.toystack.dev/specific?companies=${company}`);
+  const response = await data;
+
+  return response;
+}

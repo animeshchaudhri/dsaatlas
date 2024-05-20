@@ -1,17 +1,18 @@
 "use client";
 
-import sheetcall from "../../app/api/sheet";
+import sheetcall, { companycall } from "../../app/api/sheet";
 import { Checkbox } from "@/components/ui/Checkbox";
 import { useState, useEffect } from "react";
-import Skeleton, {SkeletonTheme} from 'react-loading-skeleton';
-import 'react-loading-skeleton/dist/skeleton.css'
-import {clsx} from 'clsx';
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import "react-loading-skeleton/dist/skeleton.css";
+import { clsx } from "clsx";
 
 export default function Sheet() {
   const [difficulty, setDifficulty] = useState("easy");
   const [isLoading, setLoading] = useState(true);
   const [sheetData, setSheetData] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // State to hold the input value
+  const [company, setCompany] = useState("");
 
   const fetchSheetData = async (difficulty: any) => {
     try {
@@ -28,8 +29,30 @@ export default function Sheet() {
   useEffect(() => {
     fetchSheetData(difficulty);
   }, [difficulty]);
+
   const handleInputChange = (e: any) => {
     setSearchValue(e.target.value); // Update the state with the new value
+  };
+  const getDatabycompany = async (company: any) => {
+    try {
+      const sheetData = await companycall(company);
+      const jsonData = await sheetData.json();
+      console.log(jsonData);
+      setSheetData(jsonData);
+      setLoading(false);
+    } catch (error) {
+      console.error("Failed to fetch data:", error);
+    }
+  };
+
+  // useEffect(() => {
+  //   getDatabycompany(company);
+  // }, [company]);
+
+  const handleChange = (event: any) => {
+    setCompany(event.target.value);
+    setLoading(true);
+    getDatabycompany(event.target.value);
   };
 
   return (
@@ -38,7 +61,13 @@ export default function Sheet() {
         <div className="mx-auto mt-20 min-h-screen max-w-7xl">
           <div className="flex flex-1 flex-row text-xs">
             <button
-              className={clsx("rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white", {"border-[#06b6d4]" : difficulty=="easy", "border-slate-700" : difficulty != "easy"})}
+              className={clsx(
+                "rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white",
+                {
+                  "border-[#06b6d4]": difficulty == "easy",
+                  "border-slate-700": difficulty != "easy",
+                }
+              )}
               onClick={() => {
                 setLoading(true);
                 setDifficulty("easy");
@@ -47,7 +76,10 @@ export default function Sheet() {
               Easy
             </button>
             <button
-              className={clsx("border px-2 py-2 tracking-wider text-white", {"border-[#06b6d4]" : difficulty=="medium", "border-slate-700" : difficulty != "medium"})}
+              className={clsx("border px-2 py-2 tracking-wider text-white", {
+                "border-[#06b6d4]": difficulty == "medium",
+                "border-slate-700": difficulty != "medium",
+              })}
               onClick={() => {
                 setLoading(true);
                 setDifficulty("medium");
@@ -56,7 +88,13 @@ export default function Sheet() {
               Medium
             </button>
             <button
-              className={clsx("rounded-tr rounded-br border px-2 py-2 tracking-wider text-white", {"border-[#06b6d4]" : difficulty=="hard", "border-slate-700" : difficulty != "hard"})}
+              className={clsx(
+                "rounded-tr rounded-br border px-2 py-2 tracking-wider text-white",
+                {
+                  "border-[#06b6d4]": difficulty == "hard",
+                  "border-slate-700": difficulty != "hard",
+                }
+              )}
               onClick={() => {
                 setLoading(true);
                 setDifficulty("hard");
@@ -71,6 +109,36 @@ export default function Sheet() {
               value={searchValue}
               onChange={handleInputChange}
             />
+
+            <select
+              className="rounded-tr rounded-br border px-2 py-2 tracking-wider ml-96 text-white bg-transparent"
+              value={company}
+              onChange={handleChange}
+            >
+              <option value="" disabled>
+                Select a company
+              </option>
+
+              <option value="Google">Google</option>
+              <option value="Amazon">Amazon</option>
+              <option value="Apple">Apple</option>
+              <option value="Adobe">Adobe</option>
+              <option value="Microsoft">Microsoft</option>
+              <option value="Bloomberg">Bloomberg</option>
+              <option value="Facebook">Facebook</option>
+              <option value="Oracle">Oracle</option>
+              <option value="Uber">Uber</option>
+              <option value="Expedia">Expedia</option>
+              <option value="Twitter">Twitter</option>
+              <option value="Nagarro">Nagarro</option>
+              <option value="Sap">SAP</option>
+              <option value="Yahoo">Yahoo</option>
+              <option value="Cisco">Cisco</option>
+              <option value="Qualcomm">Qualcomm</option>
+              <option value="GOLDMAN_SACHS">Goldman Sachs</option>
+              <option value="YANDEX">Yandex</option>
+              <option value="SERVICENOW">ServiceNow</option>
+            </select>
           </div>
           <div className="flex items-center mt-10 justify-center">
             <div className="rounded-md border w-[60rem]  border-gray-700">
@@ -94,24 +162,40 @@ export default function Sheet() {
                 </thead>
 
                 <tbody className="divide-y divide-gray-700 text-sm">
-                    {isLoading? 
+                  {isLoading ? (
                     <SkeletonTheme
-                    baseColor="#334154"
-                    highlightColor="#06b6d4"
-                    borderRadius="0.5rem"
-                    duration={4}>
-                    {[...Array(20)].map((e, i) => (
-                      <tr key={i} className="w-full bg-[#12151D] hover:bg-gray-900">
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                        <td className="px-7 py-2"><Skeleton /></td>
-                      </tr>
-                    ))}
+                      baseColor="#334154"
+                      highlightColor="#06b6d4"
+                      borderRadius="0.5rem"
+                      duration={4}
+                    >
+                      {[...Array(20)].map((e, i) => (
+                        <tr
+                          key={i}
+                          className="w-full bg-[#12151D] hover:bg-gray-900"
+                        >
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                          <td className="px-7 py-2">
+                            <Skeleton />
+                          </td>
+                        </tr>
+                      ))}
                     </SkeletonTheme>
-                    :
+                  ) : (
                     sheetData.map((item: any) => (
                       <tr
                         key={item._id}
@@ -186,7 +270,8 @@ export default function Sheet() {
                           </a>
                         </td>
                       </tr>
-                    ))}
+                    ))
+                  )}
                 </tbody>
               </table>
             </div>
