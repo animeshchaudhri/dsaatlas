@@ -142,6 +142,7 @@ function ThePage() {
         {isLoading
           ? Array.from({ length: 75 }, (_, index) => (
               <SkeletonTheme
+                key={index} // Add key prop with unique value
                 baseColor="#334154"
                 highlightColor="#06b6d4"
                 borderRadius="0.5rem"
@@ -152,7 +153,7 @@ function ThePage() {
             ))
           : questions.map((question, index) => (
               <ChallengeCard
-                key={question.id}
+                key={question.id} // Add key prop with unique value
                 challengeUrl={question.url}
                 emoji={emojis[index]}
                 dayNo={index + 1}
