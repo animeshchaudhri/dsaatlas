@@ -7,6 +7,7 @@ interface ChallengeCardProps {
   numLikes: number;
   timestamp: string;
   description: string;
+  link: string;
 }
 
 export const ChallengeCard: React.FC<ChallengeCardProps> = ({
@@ -16,11 +17,12 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({
   numLikes,
   timestamp,
   description,
+  link,
 }) => {
   return (
     <a
       className="group snap-center focus:outline-none sm:w-[330px] xl:w-[333px]"
-      href={`/challenge/${challengeType.toLowerCase()}`}
+      href={link}
     >
       <div className="text-card-foreground rounded-3xl border shadow-sm group/card bg-background hover:bg-card-hovered relative overflow-hidden duration-300 sm:min-w-[300px] xl:min-w-[333px] hover:shadow-medium group-focus:shadow-medium dark:hover:shadow-medium-dark dark:group-focus:shadow-medium-dark dark:hover:border-difficulty-medium-dark hover:border-difficulty-medium dark:group-focus:border-difficulty-medium-dark group-focus:border-difficulty-medium">
         {/* Difficulty Icon */}
@@ -111,7 +113,7 @@ export const ChallengeCard: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
-          {description}
+          {description.slice(0, 100)}
         </div>
       </div>
     </a>
@@ -125,11 +127,12 @@ export const AnotherChallengeCard: React.FC<ChallengeCardProps> = ({
   numLikes,
   timestamp,
   description,
+  link,
 }) => {
   return (
     <a
       className="group snap-center focus:outline-none sm:w-[330px] xl:w-[333px]"
-      href={`/challenge/${challengeType.toLowerCase()}`}
+      href={link}
     >
       <div className="text-card-foreground rounded-3xl border shadow-sm group/card bg-background hover:bg-card-hovered relative overflow-hidden duration-300 sm:min-w-[300px] xl:min-w-[333px] hover:shadow-easy group-focus:shadow-easy dark:hover:shadow-easy-dark dark:group-focus:shadow-easy-dark dark:hover:border-difficulty-easy-dark hover:border-difficulty-easy dark:group-focus:border-difficulty-easy-dark group-focus:border-difficulty-easy">
         <svg
@@ -219,7 +222,7 @@ export const AnotherChallengeCard: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
-          {description}
+          {description.slice(0, 100)}
         </div>
       </div>
     </a>
@@ -233,11 +236,12 @@ export const MEDIUM_Card: React.FC<ChallengeCardProps> = ({
   numLikes,
   timestamp,
   description,
+  link,
 }) => {
   return (
     <a
       className="group snap-center focus:outline-none sm:w-[330px] xl:w-[333px]"
-      href={`/challenge/${challengeType.toLowerCase()}`}
+      href={link}
     >
       <div className="text-card-foreground rounded-3xl border shadow-sm group/card bg-background hover:bg-card-hovered relative overflow-hidden duration-300 sm:min-w-[300px] xl:min-w-[333px] hover:shadow-extreme group-focus:shadow-extreme dark:hover:shadow-extreme-dark dark:group-focus:shadow-extreme-dark dark:hover:border-difficulty-extreme-dark hover:border-difficulty-extreme dark:group-focus:border-difficulty-extreme-dark group-focus:border-difficulty-extreme">
         <svg
@@ -326,7 +330,7 @@ export const MEDIUM_Card: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
-          {description}
+          {description.slice(0, 100)}
         </div>
       </div>
     </a>
@@ -340,11 +344,12 @@ export const Easy_Card: React.FC<ChallengeCardProps> = ({
   numLikes,
   timestamp,
   description,
+  link,
 }) => {
   return (
     <a
       className="group snap-center focus:outline-none sm:w-[330px] xl:w-[333px]"
-      href={`/challenge/${challengeType.toLowerCase()}`}
+      href={link}
     >
       <div className="text-card-foreground rounded-3xl border shadow-sm group/card bg-background hover:bg-card-hovered relative overflow-hidden duration-300 sm:min-w-[300px] xl:min-w-[333px] hover:shadow-beginner group-focus:shadow-beginner dark:hover:shadow-beginner-dark dark:group-focus:shadow-beginner-dark dark:hover:border-difficulty-beginner-dark hover:border-difficulty-beginner dark:group-focus:border-difficulty-beginner-dark group-focus:border-difficulty-beginner">
         <svg
@@ -434,7 +439,7 @@ export const Easy_Card: React.FC<ChallengeCardProps> = ({
               {timestamp}
             </div>
           </div>
-          {description}
+          {description.slice(0, 100)}
         </div>
       </div>
     </a>
