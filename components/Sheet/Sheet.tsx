@@ -6,9 +6,10 @@ import { useState, useEffect } from "react";
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { clsx } from "clsx";
+import Navbar from "../ui/Navbar/Navbar";
 
 export default function Sheet() {
-  const [difficulty, setDifficulty] = useState("easy");
+  const [difficulty, setDifficulty] = useState("Easy");
   const [isLoading, setLoading] = useState(true);
   const [sheetData, setSheetData] = useState([]);
   const [searchValue, setSearchValue] = useState(""); // State to hold the input value
@@ -27,8 +28,13 @@ export default function Sheet() {
   };
 
   useEffect(() => {
+    if(company === "") {
     fetchSheetData(difficulty);
-  }, [difficulty]);
+    }
+    else{
+      setLoading(false);
+    }
+  }, [difficulty, company]);
 
   const handleInputChange = (e: any) => {
     setSearchValue(e.target.value); // Update the state with the new value
@@ -64,25 +70,25 @@ export default function Sheet() {
               className={clsx(
                 "rounded-tl rounded-bl border px-2 py-2 tracking-wider text-white",
                 {
-                  "border-[#06b6d4]": difficulty == "easy",
-                  "border-slate-700": difficulty != "easy",
+                  "border-[#06b6d4]": difficulty == "Easy",
+                  "border-slate-700": difficulty != "Easy",
                 }
               )}
               onClick={() => {
                 setLoading(true);
-                setDifficulty("easy");
+                setDifficulty("Easy");
               }}
             >
               Easy
             </button>
             <button
               className={clsx("border px-2 py-2 tracking-wider text-white", {
-                "border-[#06b6d4]": difficulty == "medium",
-                "border-slate-700": difficulty != "medium",
+                "border-[#06b6d4]": difficulty == "Medium",
+                "border-slate-700": difficulty != "Medium",
               })}
               onClick={() => {
                 setLoading(true);
-                setDifficulty("medium");
+                setDifficulty("Medium");
               }}
             >
               Medium
@@ -91,13 +97,13 @@ export default function Sheet() {
               className={clsx(
                 "rounded-tr rounded-br border px-2 py-2 tracking-wider text-white",
                 {
-                  "border-[#06b6d4]": difficulty == "hard",
-                  "border-slate-700": difficulty != "hard",
+                  "border-[#06b6d4]": difficulty == "Hard",
+                  "border-slate-700": difficulty != "Hard",
                 }
               )}
               onClick={() => {
                 setLoading(true);
-                setDifficulty("hard");
+                setDifficulty("Hard");
               }}
             >
               Hard
@@ -181,7 +187,7 @@ export default function Sheet() {
                     </SkeletonTheme>
                     :
                     sheetData
-                    .filter((i:any) => (i.title.includes(searchValue) || i.description.includes(searchValue)))
+                    .filter((i:any) => ((i.title.includes(searchValue) || i.description.includes(searchValue)) && i.difficulty === difficulty))
                     .map((item: any) => (
                       <tr
                         key={item._id}
