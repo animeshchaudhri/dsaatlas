@@ -354,10 +354,25 @@ export default function Sheet(user_id: any) {
                   )}
                 </tbody>
               </table>
+              <SkeltonBox />
             </div>
           </div>
         </div>
       </div>
     </>
   );
+}
+
+
+function SkeltonBox() {
+  return(
+    <SkeletonTheme
+    baseColor="#334154"
+    highlightColor="#06b6d4"
+    borderRadius="0.5rem"
+    duration={4}><div className="flex gap-12 h-[300] w-full">
+    <Skeleton width={333} height={238} />
+    <Skeleton width={333} height={238} />
+  </div>
+  </SkeletonTheme>)
 }
