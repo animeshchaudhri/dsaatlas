@@ -162,41 +162,27 @@ export default function Sheet() {
                 </thead>
 
                 <tbody className="divide-y divide-gray-700 text-sm">
-                  {isLoading ? (
+                    {isLoading? 
                     <SkeletonTheme
-                      baseColor="#334154"
-                      highlightColor="#06b6d4"
-                      borderRadius="0.5rem"
-                      duration={4}
-                    >
-                      {[...Array(20)].map((e, i) => (
-                        <tr
-                          key={i}
-                          className="w-full bg-[#12151D] hover:bg-gray-900"
-                        >
-                          <td className="px-7 py-2">
-                            <Skeleton />
-                          </td>
-                          <td className="px-7 py-2">
-                            <Skeleton />
-                          </td>
-                          <td className="px-7 py-2">
-                            <Skeleton />
-                          </td>
-                          <td className="px-7 py-2">
-                            <Skeleton />
-                          </td>
-                          <td className="px-7 py-2">
-                            <Skeleton />
-                          </td>
-                          <td className="px-7 py-2">
-                            <Skeleton />
-                          </td>
-                        </tr>
-                      ))}
+                    baseColor="#334154"
+                    highlightColor="#06b6d4"
+                    borderRadius="0.5rem"
+                    duration={4}>
+                    {[...Array(20)].map((e, i) => (
+                      <tr key={i} className="w-full bg-[#12151D] hover:bg-gray-900">
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                        <td className="px-7 py-2"><Skeleton /></td>
+                      </tr>
+                    ))}
                     </SkeletonTheme>
-                  ) : (
-                    sheetData.map((item: any) => (
+                    :
+                    sheetData
+                    .filter((i:any) => (i.title.includes(searchValue) || i.description.includes(searchValue)))
+                    .map((item: any) => (
                       <tr
                         key={item._id}
                         className="w-full bg-[#12151D] hover:bg-gray-900"
@@ -270,8 +256,7 @@ export default function Sheet() {
                           </a>
                         </td>
                       </tr>
-                    ))
-                  )}
+                    ))}
                 </tbody>
               </table>
             </div>
