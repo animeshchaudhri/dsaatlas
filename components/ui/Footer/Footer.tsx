@@ -11,7 +11,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             className="group rounded-lg p-2"
-            href="/"
+            href="https://github.com/animeshchaudhri/dsaatlas"
           >
             <span className="sr-only">onGithub</span>
             <Github className="h-5 w-5 duration-150 group-hover:scale-110 group-hover:fill-black dark:group-hover:fill-white" />
@@ -20,7 +20,7 @@ export default function Footer() {
             target="_blank"
             rel="noreferrer"
             className="group rounded-lg p-2"
-            href="/"
+            href="https://twitter.com/animesh_xd"
           >
             <span className="sr-only">onTwitter</span>
             <Twitter className="h-5 w-5 duration-150 group-hover:scale-110 group-hover:fill-black dark:group-hover:fill-white" />

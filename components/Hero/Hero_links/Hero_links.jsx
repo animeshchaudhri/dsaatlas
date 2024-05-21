@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import React from "react";
 
 function Hero_links() {
@@ -41,15 +42,22 @@ function Hero_links() {
         for Step by step guide to Crack MAANG.
       </p>
       <div className="mb-6 flex flex-row space-x-4">
-        <a
+
+        <Link href="/roadmap" >
+        <div
           className="rounded-md border border-gray-500 px-4 py-2 text-white shadow-xl transition duration-200 hover:scale-95 hover:shadow-[#06b6d4]/20"
-          href="/problems"
+          
         >
           Dsa Roadmap
-        </a>
-        <a className="rounded-md border-2 border-[#06b6d4]/70 px-4 py-2 text-white shadow-xl transition duration-200 hover:scale-95 hover:shadow-[#06b6d4]/20">
+        </div>
+        </Link>
+
+        <Link href="/explore">
+        <div className="rounded-md border-2 border-[#06b6d4]/70 px-4 py-2 text-white shadow-xl transition duration-200 hover:scale-95 hover:shadow-[#06b6d4]/20">
           Explore
-        </a>
+        </div>
+
+        </Link>
       </div>
       <div className="mb-6 flex w-full flex-col text-xs text-white">
         Confused? Learn how to effectively use Dsa Atlas{" "}

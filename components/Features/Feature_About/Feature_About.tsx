@@ -41,8 +41,7 @@ function Feature_About() {
       <p className="mx-auto mb-6 max-w-2xl px-2 text-center text-sm leading-7 text-gray-400 lg:text-base">
         There are a handful of machine coding questions that can be asked in a
         Technical Interview. Dsa atlas provides a comprehensive list of
-        front-end and algorithmic questions with solutions so that you are
-        prepared, always.
+        algorithmic questions with solutions so that you are prepared, always.
       </p>
 
       <Code_Vault />

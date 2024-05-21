@@ -77,7 +77,7 @@ function DSAAtlasFeatures() {
               </div>
               <div className=" absolute top-0 right-0 flec items-center justify-center opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 ">
                 <p className="absolute top-2.5 right-3 bg-clip-text text-transparent bg-gradient-to-t from-white to-white/40">
-                  5%
+                  10%
                 </p>
               </div>
             </div>
@@ -93,7 +93,7 @@ function DSAAtlasFeatures() {
               </div>
               <div className=" absolute top-0 right-0 flec items-center justify-center opacity-0 group-hover:opacity-100 translate-x-4 group-hover:translate-x-0 transition-all duration-300 ">
                 <p className="absolute top-2.5 right-3 bg-clip-text text-transparent bg-gradient-to-t from-white to-white/40">
-                  5%
+                  55%
                 </p>
               </div>
             </div>
