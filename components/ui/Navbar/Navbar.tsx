@@ -10,9 +10,9 @@ function Navbar() {
   console.log(userId);
   return (
     <>
-      <div className=" w-full flex  justify-center items-centre mx-auto pl-6 pr-6">
+      <div className=" w-full flex  justify-center items-centre mx-auto pl-6 pr-6 ">
         <div
-          className="flex w-full items-center justify-between h-14 text-sm font-medium mx-auto pl-6 pr-6 container"
+          className="flex w-full items-center justify-between h-14 text-sm font-medium mx-auto pl-6 pr-6 "
           style={{ maxWidth: "950px" }}
         >
           <div className="relative flex items-center gap-3">
@@ -31,7 +31,7 @@ function Navbar() {
             ) : (
               <Link href={"sign-in"}>
                 <div className="flex items-center space-x-2 focus:bg-accent w-20 rounded-xl bg-transparent p-2 text-black duration-300 hover:bg-gray-200 focus:outline-none dark:text-white hover:dark:bg-gray-800 cursor-pointer">
-                  <LogIn className="h-5 w-5" />
+                  <LogIn className="h-5 w-3" />
                   <span>Login</span>
                 </div>
               </Link>
