@@ -1,12 +1,12 @@
 export default async function sheetcall(Difficulty: string) {
-  const data = fetch(`https://lavenderlord-stinger.toystack.dev/${Difficulty}`);
+  const data = fetch(`https://cyanfright-hawk.toystack.dev/${Difficulty}`);
   const response = await data;
 
   return response;
 }
 export async function companycall(company: string) {
   const data = fetch(
-    `https://lavenderlord-stinger.toystack.dev/specific?companies=${company}`
+    `https://cyanfright-hawk.toystack.dev/specific?companies=${company}`
   );
   const response = await data;
 
@@ -16,7 +16,7 @@ export async function companycall(company: string) {
 export async function addUserQuestions(userId: string, questionIds: string[]) {
   try {
     const response = await fetch(
-      "https://lavenderlord-stinger.toystack.dev/add",
+      "https://cyanfright-hawk.toystack.dev/add",
       {
         method: "POST",
         headers: {
@@ -38,7 +38,7 @@ export async function addUserQuestions(userId: string, questionIds: string[]) {
 export async function getUserQuestions(userId: string) {
   try {
     const response = await fetch(
-      `https://lavenderlord-stinger.toystack.dev/search?user_id=${userId}`
+      `https://cyanfright-hawk.toystack.dev/search?user_id=${userId}`
     );
     return response;
   } catch (error) {
