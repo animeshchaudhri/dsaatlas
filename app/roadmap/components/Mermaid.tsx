@@ -16,17 +16,18 @@ const Mermaid: React.FC<MermaidProps> = ({ text }) => {
       theme: "forest",
       logLevel: 5,
     });
-
-    
   }, []);
 
   useEffect(() => {
     if (ref.current && text !== "") {
-      console.log("render tect:", text);
-      
-      mermaid.mermaidAPI.render("preview", text, (result:any) => {
-        if(ref.current) 
-        ref.current.innerHTML = result;
+      try {
+        mermaid.mermaidAPI.parse(text);
+      } catch (error) {
+        console.error(error);
+        return;
+      }
+      mermaid.mermaidAPI.render("preview", text, (result: any) => {
+        if (ref.current) ref.current.innerHTML = result;
       });
     }
   }, [text]);

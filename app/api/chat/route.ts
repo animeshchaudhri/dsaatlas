@@ -7,6 +7,7 @@ import {
   HarmCategory,
   HarmBlockThreshold,
 } from "@google/generative-ai";
+import { log } from "console";
 
 const API_KEY = process.env.KEY;
 const MODEL_NAME = "gemini-1.5-pro-latest";
@@ -15,9 +16,13 @@ export async function POST(req: NextRequest) {
   try {
     const reqBody = await req.json();
     const { userInput } = reqBody;
+    
+    
     const genAI = new GoogleGenerativeAI(API_KEY as string);
-    const model = genAI.getGenerativeModel({ model: MODEL_NAME, generationConfig: { maxOutputTokens: 200 }});
-  
+    const model = genAI.getGenerativeModel({
+      model: MODEL_NAME,
+      generationConfig: { maxOutputTokens: 200 },
+    });
 
     const generationConfig = {
       temperature: 1,
